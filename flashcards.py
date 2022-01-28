@@ -57,3 +57,19 @@ def remove_card(index):
             return render_template("remove_card.html", card=db[index])
     except IndexError:
         abort(404)
+
+
+@app.route("/update_card/<int:index>", methods=["GET", "POST"])
+def update_card(index):
+    if request.method == "POST":
+        card = {"question": request.form['question'],
+                "answer": request.form['answer']}
+        db[index] = card
+        save_db()
+        return redirect(url_for('card_view', index=index))
+    else:
+        return render_template("update_card.html", card=db[index])
+
+
+if __name__ == '__main__':
+    app.run()
