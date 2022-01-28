@@ -6,6 +6,11 @@
     <link rel="stylesheet" href=" {{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <nav>
+        <a href="{{ url_for('welcome') }}">Home</a>
+        <a href="{{ url_for('add_card') }}">Add Card</a>
+        <a href="{{ url_for('api_card_list') }}">Card List</a>
+    </nav>
     {% block content %}
     {% endblock %}
 </body>
